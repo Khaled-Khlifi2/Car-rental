@@ -1,6 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import { useState } from "react";
+import CarDetails from "./pages/CarDetails";
+import Home from "./pages/Home";
+import Cars from "./pages/Cars";
+import MyBookings from "./pages/MyBookings";
 
 const App = () => {
 
@@ -10,8 +14,15 @@ const App = () => {
   return (
     <>
       {!isOwnerPath && <Navbar setShowLogin={setShowLogin}/>}
+
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/car-details/:id" element={<CarDetails/>}/>
+        <Route path="/cars" element={<Cars/>}/>
+        <Route path="/my-bookings" element={<MyBookings/>}/>
+      </Routes>
     </>
   )
 }
 
-export default App
+export default App;
